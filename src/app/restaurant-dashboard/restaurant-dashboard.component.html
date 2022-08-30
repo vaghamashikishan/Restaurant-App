@@ -1,0 +1,59 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow ">
+  <div class="container-fluid">
+    <div class="navbar-brand">Restaurant Record App</div>
+    <button mat-raised-button [ngStyle]="{'backgroundColor':'green', 'color':'white'}" data-toggle="modal"
+      data-target="#exampleModal">Add Restaurant</button>
+  </div>
+</nav>
+
+<div class="p-5 mb-4 bg-light mat-elevation-z5">
+  <div class="py-5">
+    <h1 class="display-5 fw-bold">Restaurant Management is now EASY!</h1>
+    <p class="col-md-8 fs-4">You can manage restaurant details easily...</p>
+    <button mat-fab [ngStyle]="{'backgroundColor':'rgba(0, 0, 0, 0.75)', 'color':'white'}">
+      <mat-icon>arrow_forward</mat-icon>
+    </button>
+  </div>
+</div>
+
+<mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  <ng-container matColumnDef="name">
+    <mat-header-cell *matHeaderCellDef class="header"> Name </mat-header-cell>
+    <mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="address">
+    <mat-header-cell *matHeaderCellDef> Address </mat-header-cell>
+    <mat-cell *matCellDef="let row"> {{row.address}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="mobile">
+    <mat-header-cell *matHeaderCellDef> Mobile </mat-header-cell>
+    <mat-cell *matCellDef="let row"> {{row.mobile}} </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>
+
+<!--Restaurant Form Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button data-dismiss="modal" aria-label="Close" [ngStyle]="{'outline':'none','border':'none'}">
+          <mat-icon class="mt-2">close</mat-icon>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>

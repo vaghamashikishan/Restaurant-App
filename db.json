@@ -1,0 +1,38 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "name": "DummyRest",
+      "email": "typicode@gmail.com",
+      "mobile": "9662770765",
+      "address": "parvat patiya",
+      "services": "chai & coffee"
+    },
+    {
+      "name": "Kishan Vaghamashi",
+      "email": "admin@gmail.com",
+      "mobile": 8140509270,
+      "address": "Flat No-508, J Building, Suman Sangini Aavas, Near Amezia Water Park, Behind Sitaram Society, Parvat Patiya",
+      "services": "Chinese Food",
+      "id": 2
+    },
+    {
+      "name": "Jay",
+      "email": "jay@gmail.com",
+      "mobile": 965698478,
+      "address": "responscity",
+      "services": "Italian food",
+      "id": 4
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

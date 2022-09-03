@@ -10,31 +10,47 @@
   <div class="py-5">
     <h1 class="display-5 fw-bold">Restaurant Management is now EASY!</h1>
     <p class="col-md-8 fs-4">You can manage restaurant details easily...</p>
-    <button mat-fab [ngStyle]="{'backgroundColor':'rgba(0, 0, 0, 0.75)', 'color':'white'}">
+    <button mat-fab [ngStyle]="{'backgroundColor':'rgba(0, 0, 0, 0.75)', 'color':'white'}" data-toggle="modal"
+      data-target="#exampleModal">
       <mat-icon>arrow_forward</mat-icon>
     </button>
   </div>
 </div>
 
-<mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+<table [dataSource]="dataSource" mat-table class="mat-elevation-z8" matSort>
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+    <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+  </ng-container>
   <ng-container matColumnDef="name">
-    <mat-header-cell *matHeaderCellDef class="header"> Name </mat-header-cell>
+    <mat-header-cell *matHeaderCellDef class="header" mat-sort-header> Name </mat-header-cell>
     <mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
   </ng-container>
 
-  <ng-container matColumnDef="address">
-    <mat-header-cell *matHeaderCellDef> Address </mat-header-cell>
-    <mat-cell *matCellDef="let row"> {{row.address}} </mat-cell>
+  <ng-container matColumnDef="email">
+    <mat-header-cell *matHeaderCellDef class="header" mat-sort-header> Email ID</mat-header-cell>
+    <mat-cell *matCellDef="let row"> {{row.email}} </mat-cell>
   </ng-container>
 
   <ng-container matColumnDef="mobile">
-    <mat-header-cell *matHeaderCellDef> Mobile </mat-header-cell>
+    <mat-header-cell *matHeaderCellDef mat-sort-header> Mobile </mat-header-cell>
     <mat-cell *matCellDef="let row"> {{row.mobile}} </mat-cell>
   </ng-container>
 
+  <ng-container matColumnDef="address">
+    <mat-header-cell *matHeaderCellDef mat-sort-header> Address </mat-header-cell>
+    <mat-cell *matCellDef="let row"> {{row.address}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="services">
+    <mat-header-cell *matHeaderCellDef mat-sort-header> Services </mat-header-cell>
+    <mat-cell *matCellDef="let row"> {{row.services}} </mat-cell>
+  </ng-container>
+
+
   <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
   <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-</mat-table>
+</table>
 
 <!--Restaurant Form Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -48,11 +64,35 @@
         </button>
       </div>
       <div class="modal-body">
-        ...
+        <div class="modal-container">
+          <div class="mb-3">
+            <label for="name" class="form-label">Name </label>
+            <input type="text" placeholder="Enter your name" id="name" class="form-control" [(ngModel)]="name">
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email ID </label>
+            <input type="email" placeholder="Enter your email id" id="email" class="form-control" [(ngModel)]="email">
+          </div>
+          <div class="mb-3">
+            <label for="mobile" class="form-label">Mobile </label>
+            <input type="number" placeholder="Enter your mobile number" id="mobile" class="form-control"
+              [(ngModel)]="mobile">
+          </div>
+          <div class="mb-3">
+            <label for="address" class="form-label">Address </label>
+            <textarea type="text" placeholder="Enter your address" id="address" class="form-control"
+              [(ngModel)]="address"></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="services" class="form-label">Services </label>
+            <input type="text" placeholder="Enter your services" id="services" class="form-control"
+              [(ngModel)]="services">
+          </div>
+        </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" #CloseDialog>Close</button>
+        <button type="button" class="btn btn-primary" (click)="postRestaurantData()">Save changes</button>
       </div>
     </div>
   </div>

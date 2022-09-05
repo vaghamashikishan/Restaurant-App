@@ -1,18 +1,18 @@
 {
   "posts": [
     {
-      "id": 1,
-      "name": "DummyRest",
-      "email": "typicode@gmail.com",
+      "name": "Test",
+      "email": "test@gmail.com",
       "mobile": "9662770765",
       "address": "parvat patiya",
-      "services": "chai & coffee"
+      "services": "chai & coffee",
+      "id": 1
     },
     {
       "name": "Kishan Vaghamashi",
       "email": "admin@gmail.com",
       "mobile": 8140509270,
-      "address": "Flat No-508, J Building, Suman Sangini Aavas, Near Amezia Water Park, Behind Sitaram Society, Parvat Patiya",
+      "address": "Flat No-508, J Building, Suman Sangini Aavas, Near Amezia Water Park",
       "services": "Chinese Food",
       "id": 2
     },
@@ -23,6 +23,22 @@
       "address": "responscity",
       "services": "Italian food",
       "id": 4
+    },
+    {
+      "name": "Pritesh",
+      "email": "pritesh@gmail.com",
+      "mobile": 9654684454,
+      "address": "Suman sangini",
+      "services": "Chai",
+      "id": 5
+    },
+    {
+      "name": "Parth",
+      "email": "parth@gmail.com",
+      "mobile": 9099469918,
+      "address": "priyanka mega city",
+      "services": "Pizza",
+      "id": 6
     }
   ],
   "comments": [

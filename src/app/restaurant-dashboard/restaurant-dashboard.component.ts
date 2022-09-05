@@ -34,9 +34,13 @@ export class RestaurantDashboardComponent implements OnInit {
     'email',
     'mobile',
     'address',
-    'services'
+    'services',
+    'update',
+    'delete'
   ];
 
+  isEdit: boolean = false;
+  id: number = 0;
   name: string = '';
   email: string = '';
   mobile: string = '';
@@ -52,14 +56,13 @@ export class RestaurantDashboardComponent implements OnInit {
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
     },
-      (err: any) => {
-        this._toastr.error(err, 'ERROR')
+      (err: HttpErrorResponse) => {
+        this._toastr.error(err.error, 'ERROR')
       }
     )
   }
 
   validForm() {
-    debugger;
     let msg = '';
     if (this.name == '') {
       msg += 'Name cannot be empty.';
@@ -84,6 +87,25 @@ export class RestaurantDashboardComponent implements OnInit {
     return true;
   }
 
+  resetForm() {
+    this.isEdit = false;
+    this.name = '';
+    this.email = '';
+    this.mobile = '';
+    this.address = '';
+    this.services = '';
+  }
+
+  update(row: any) {
+    this.isEdit = true;
+    this.id = row.id;
+    this.name = row.name;
+    this.email = row.email;
+    this.mobile = row.mobile;
+    this.address = row.address;
+    this.services = row.services;
+  }
+
   postRestaurantData() {
     if (!this.validForm()) return;
     let _formGroup = new restaurantData();
@@ -93,12 +115,22 @@ export class RestaurantDashboardComponent implements OnInit {
     _formGroup.address = this.address;
     _formGroup.services = this.services;
 
-    this.postRestaurantDataSubscription = this._apiService.postRestaurant(_formGroup).subscribe((res: any) => {
-      this._toastr.success('Data added successfully.', 'Task Done');
-      this.getRestaurantData();
-      this.closeDialog.nativeElement.click();
-    }, (err: any) => {
-      this._toastr.error(err, 'Task Failed');
-    })
+    if (this.isEdit) {
+      this.postRestaurantDataSubscription = this._apiService.updateRestaurant(this.id, _formGroup).subscribe((res: any) => {
+        this._toastr.success('Record updated successfully.', 'Tasl Done');
+        this.getRestaurantData();
+        this.closeDialog.nativeElement.click();
+      }, (err: any) => {
+        this._toastr.error(err, 'Task Failed');
+      })
+    } else {
+      this.postRestaurantDataSubscription = this._apiService.postRestaurant(_formGroup).subscribe((res: any) => {
+        this._toastr.success('Data added successfully.', 'Task Done');
+        this.getRestaurantData();
+        this.closeDialog.nativeElement.click();
+      }, (err: any) => {
+        this._toastr.error(err, 'Task Failed');
+      })
+    }
   }
 }

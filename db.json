@@ -9,8 +9,12 @@
       "id": 1
     }
   ],
-  "comments": [],
-  "profile": {
-    "name": "typicode"
-  }
+  "signup": [
+    {
+      "id": 1
+    },
+    {
+      "id": 2
+    }
+  ]
 }

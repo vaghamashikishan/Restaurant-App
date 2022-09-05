@@ -36,4 +36,15 @@ export class ApiService {
       return res;
     }))
   }
+
+  // getUser(data: any) {
+  //   return this._http.post<any>("http://localhost:3000/signup", data).pipe(map((res: any) => {
+  //     return res;
+  //   }))
+  // }
+  postUser(data: any) {
+    return this._http.post<any>("http://localhost:3000/signup", data).pipe(map((res: any) => {
+      return res;
+    }))
+  }
 }

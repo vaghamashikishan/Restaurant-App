@@ -1,0 +1,32 @@
+.example-card {
+  max-width: 400px;
+}
+
+.example-header-image {
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
+}
+
+.signup_main{
+  min-height: 100vh;
+  min-width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+mat-card{
+  text-align: center;
+  width: 150%;
+}
+mat-card-header{
+  justify-content: space-around;
+}
+
+.darkgrey{
+  background-color: darkgrey;
+}
+
+.width-20{
+  width: 20rem;
+}

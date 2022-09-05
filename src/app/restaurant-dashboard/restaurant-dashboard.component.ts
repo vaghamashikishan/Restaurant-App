@@ -25,6 +25,7 @@ export class RestaurantDashboardComponent implements OnInit {
   }
 
   @ViewChild('CloseDialog') closeDialog!: ElementRef;
+  @ViewChild('CloseDeleteDialog') CloseDeleteDialog!: ElementRef;
   dataSource = new MatTableDataSource<any>();
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -49,6 +50,7 @@ export class RestaurantDashboardComponent implements OnInit {
 
   getRestaurantDataSubscription!: Subscription;
   postRestaurantDataSubscription!: Subscription;
+  deleteRestaurantDataSubscription!: Subscription;
 
   getRestaurantData() {
     this.getRestaurantDataSubscription = this._apiService.getRestaurant().subscribe((res: any) => {
@@ -96,14 +98,32 @@ export class RestaurantDashboardComponent implements OnInit {
     this.services = '';
   }
 
-  update(row: any) {
-    this.isEdit = true;
+  setDataToModal(row: any) {
     this.id = row.id;
     this.name = row.name;
     this.email = row.email;
     this.mobile = row.mobile;
     this.address = row.address;
     this.services = row.services;
+  }
+
+  update(row: any) {
+    this.isEdit = true;
+    this.setDataToModal(row);
+  }
+
+  openDeleteDialog(row: any) {
+    this.setDataToModal(row);
+  }
+
+  deleteRestaurant() {
+    this.deleteRestaurantDataSubscription = this._apiService.deleteRestaurant(this.id).subscribe((res: any) => {
+      this._toastr.success('Record deleted successfully.', 'Task Done');
+      this.getRestaurantData();
+      this.CloseDeleteDialog.nativeElement.click();
+    }, (err: any) => {
+      this._toastr.error(err, 'Task Failed');
+    })
   }
 
   postRestaurantData() {
@@ -117,7 +137,7 @@ export class RestaurantDashboardComponent implements OnInit {
 
     if (this.isEdit) {
       this.postRestaurantDataSubscription = this._apiService.updateRestaurant(this.id, _formGroup).subscribe((res: any) => {
-        this._toastr.success('Record updated successfully.', 'Tasl Done');
+        this._toastr.success('Record updated successfully.', 'Task Done');
         this.getRestaurantData();
         this.closeDialog.nativeElement.click();
       }, (err: any) => {

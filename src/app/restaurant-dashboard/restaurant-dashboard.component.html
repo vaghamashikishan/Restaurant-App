@@ -1,8 +1,13 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow ">
   <div class="container-fluid">
     <div class="navbar-brand">Restaurant Record App</div>
-    <button mat-raised-button [ngStyle]="{'backgroundColor':'green', 'color':'white'}" data-toggle="modal"
-      data-target="#exampleModal" (click)="resetForm()">Add Restaurant</button>
+    <div>
+      <button mat-raised-button [ngStyle]="{'backgroundColor':'green', 'color':'white'}" data-toggle="modal"
+        data-target="#exampleModal" (click)="resetForm()">Add Restaurant</button>
+      <button class="ms-2" mat-raised-button [ngStyle]="{'backgroundColor':'#c73737c7', 'color':'white'}"
+        routerLink="/login">Log
+        Out</button>
+    </div>
   </div>
 </nav>
 

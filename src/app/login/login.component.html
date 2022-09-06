@@ -9,15 +9,15 @@
     <mat-card-content>
       <mat-form-field appearance="outline">
         <mat-label>Enter your email ID</mat-label>
-        <input type="email" matInput autocomplete="off">
+        <input type="email" matInput autocomplete="off" [(ngModel)]="email">
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>Enter your password</mat-label>
-        <input type="password" matInput>
+        <input type="password" matInput [(ngModel)]="password">
       </mat-form-field>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-raised-button class="darkgrey">Login<mat-icon>login</mat-icon></button>
+      <button mat-raised-button class="darkgrey" (click)="validateUser()">Login<mat-icon>login</mat-icon></button>
     </mat-card-actions>
     <a routerLink="/signup">New User...? Click to sign-up</a>
     <br>

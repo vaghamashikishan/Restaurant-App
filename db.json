@@ -11,10 +11,11 @@
   ],
   "signup": [
     {
+      "name": "Kishan",
+      "mobile": 9662770761,
+      "email": "kishan@gmail.com",
+      "password": "kishan",
       "id": 1
-    },
-    {
-      "id": 2
     }
   ]
 }

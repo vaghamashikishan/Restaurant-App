@@ -13,7 +13,8 @@
       </mat-form-field>
       <mat-form-field appearance="outline" class="width-20">
         <mat-label>Enter your mobile number</mat-label>
-        <input type="number" matInput autocomplete="off" [(ngModel)]="mobile">
+        <input type="number" matInput autocomplete="off" [(ngModel)]="mobile"
+          onkeypress="if(this.value.length > 10) return false;">
       </mat-form-field>
       <mat-form-field appearance="outline" class="width-20">
         <mat-label>Enter your email ID</mat-label>

@@ -16,6 +16,13 @@
       "email": "kishan@gmail.com",
       "password": "kishan",
       "id": 1
+    },
+    {
+      "name": "Mitesh",
+      "mobile": 9638356020,
+      "email": "mitesh@gmail.com",
+      "password": "12345",
+      "id": 2
     }
   ]
 }
